@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Traffic Light with Pointer and Messages</title>
+  <style>
+    body {
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .traffic-light-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .traffic-light {
+      background-color: #333;
+      width: 100px;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 0 10px #000;
+      position: relative;
+    }
+
+    .light {
+      width: 60px;
+      height: 60px;
+      background-color: #111;
+      border-radius: 50%;
+      transition: background-color 0.5s;
+      position: relative;
+    }
+
+    .red.on {
+      background-color: red;
+      box-shadow: 0 0 20px red;
+    }
+
+    .yellow.on {
+      background-color: yellow;
+      box-shadow: 0 0 20px yellow;
+    }
+
+    .green.on {
+      background-color: limegreen;
+      box-shadow: 0 0 20px limegreen;
+    }
+
+    /* Hand pointer */
+    .hand {
+      width: 40px;
+      height: 40px;
+      background: url('https://cdn-icons-png.flaticon.com/512/109/109602.png') no-repeat center/contain;
+      position: absolute;
+      left: -60px; /* position it left to the lights */
+      top: 0;
+      transition: top 0.5s ease;
+      filter: drop-shadow(0 0 1px black);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Message below traffic light */
+    .message {
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 5px black;
+      height: 30px; /* reserve space so text doesn't jump */
+      text-align: center;
+      min-width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="traffic-light-container">
+    <div class="traffic-light">
+      <div class="light red" id="redLight"></div>
+      <div class="light yellow" id="yellowLight"></div>
+      <div class="light green" id="greenLight"></div>
+      <div class="hand" id="handPointer"></div>
+    </div>
+  </div>
+
+  <div class="message" id="messageText">Stop</div>
+
+  <script>
+    const red = document.getElementById("redLight");
+    const yellow = document.getElementById("yellowLight");
+    const green = document.getElementById("greenLight");
+    const hand = document.getElementById("handPointer");
+    const message = document.getElementById("messageText");
+
+    // We will store the Y positions of each light relative to the container
+    const trafficLight = document.querySelector(".traffic-light");
+
+    // Positions will be calculated once DOM is ready
+    let positions = {};
+
+    function calculatePositions() {
+      positions.red = red.offsetTop + red.offsetHeight / 2 - hand.offsetHeight / 2;
+      positions.yellow = yellow.offsetTop + yellow.offsetHeight / 2 - hand.offsetHeight / 2;
+      positions.green = green.offsetTop + green.offsetHeight / 2 - hand.offsetHeight / 2;
+    }
+
+    window.addEventListener("resize", calculatePositions);
+    window.addEventListener("load", () => {
+      calculatePositions();
+      updateLights(); // Start with red
+      intervalId = setInterval(updateLights, 3000);
+    });
+
+    let currentLight = "red";
+    let intervalId;
+
+    function updateLights() {
+      // Reset all lights
+      red.classList.remove("on");
+      yellow.classList.remove("on");
+      green.classList.remove("on");
+
+      if (currentLight === "red") {
+        red.classList.add("on");
+        hand.style.top = positions.red + "px";
+        message.textContent = "Stop";
+        currentLight = "green";
+      } else if (currentLight === "green") {
+        green.classList.add("on");
+        hand.style.top = positions.green + "px";
+        message.textContent = "Go";
+        currentLight = "yellow";
+      } else if (currentLight === "yellow") {
+        yellow.classList.add("on");
+        hand.style.top = positions.yellow + "px";
+        message.textContent = "Get Ready";
+        currentLight = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
