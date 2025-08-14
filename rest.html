@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taqa's Restaurant</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1551218808-94e220e084d2') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 5px;
+      color: #ccc;
+    }
+
+    /* القائمة المنسدلة */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 30px auto;
+      display: block;
+    }
+
+    .dropdown-button {
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .dropdown-button:hover {
+      background: #00bcd4;
+      color: #000;
+    }
+
+    .menu-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 90vw;
+      max-width: 700px;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
+
+    .dropdown:hover .menu-content {
+      display: block;
+    }
+
+    .menu-content h3 {
+      color: #00bcd4;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 5px;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0,0,0,0.7);
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Taqa's Restaurant</h1>
+    <p>Amman, Jordan</p>
+  </header>
+
+  <!-- القائمة المنسدلة -->
+  <div class="dropdown">
+    <button class="dropdown-button">MENU🍽️</button>
+    <div class="menu-content">
+      <h3>Main Dishes</h3>
+      <ul>
+        <li>Grilled Chicken with Herbs - 8.5 JD</li>
+        <li>Beef Shawarma Plate - 6 JD</li>
+        <li>Vegetarian Pasta - 5.5 JD</li>
+      </ul>
+
+      <h3>Desserts</h3>
+      <ul>
+        <li>Chocolate Lava Cake - 4 JD</li>
+        <li>Baklava with Pistachio - 3.5 JD</li>
+        <li>Vanilla Ice Cream - 2.5 JD</li>
+      </ul>
+
+      <h3>Drinks</h3>
+      <ul>
+        <li>Fresh Orange Juice - 2 JD</li>
+        <li>Iced Coffee - 2.5 JD</li>
+        <li>Mineral Water - 1 JD</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Taqa's Restaurant. All rights reserved.</p>
+  </footer>
+</body>
+</html>
