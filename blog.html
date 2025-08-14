@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taqa's Tech Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #1c1c1c, #2b5876);
+      color: #f0f0f0;
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: url('https://cdn-icons-png.flaticon.com/512/3135/3135789.png') no-repeat center;
+      background-size: cover;
+      margin: 0 auto 10px;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 28px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 30px 20px;
+      min-height: 60vh;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #000;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="avatar"></div>
+    <h1>Taqa's Tech Blog</h1>
+    <nav>
+      <a onclick="showSection('about')">About Me</a>
+      <a onclick="showSection('projects')">My Projects</a>
+      <a onclick="showSection('contact')">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="active">
+      <h2>About Me</h2>
+      <p>Hi, I'm Taqa 👩‍💻 — a technology enthusiast who loves coding, learning new tech skills, and building creative web projects. I created this blog to share my tech journey and ideas with the world.</p>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <ul>
+        <li>🌐 Built a responsive blog theme using HTML & CSS</li>
+        <li>👩‍🍳 Created a small business website for a fictional restaurant</li>
+        <li>🚦 Developed a working traffic light simulation with JavaScript</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can reach me via email or through my GitHub profile.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Taqa's Tech Blog. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('main section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
